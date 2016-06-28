@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mosaic</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <style type="text/css">
+    /* Styles are inline here since they are just a few :) */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+    }
+
+    .mosaic {
+      position: relative;
+      margin: 0 auto;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      outline: 1px solid #e6e6e6;
+      -webkit-transition: background-color 0.5s cubic-bezier(0.23, 1.1, 0.2, 0.94);
+      -moz-transition: background-color 0.5s cubic-bezier(0.23, 1.1, 0.2, 0.94);
+      -o-transition: background-color 0.5s cubic-bezier(0.23, 1.1, 0.2, 0.94);
+      transition: background-color 0.5s cubic-bezier(0.23, 1.1, 0.2, 0.94);
+    }
+
+    .mosaic.dragover {
+      background-color: rgba(255, 85, 65, 0.15);
+    }
+
+    .mosaic-input {
+      display: none;
+    }
+
+    .mosaic-button {
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: 20px;
+      padding: 0 25px;
+      height: 32px;
+      background: #ff5541;
+      border: none;
+      color: #fff;
+      font-size: 12px;
+      outline: none;
+      cursor: pointer;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      border-radius: 25px;
+    }
+
+    .mosaic-button:hover {
+      background: #d04a36;
+    }
+
+    .mosaic-output, .mosaic-selector, .mosaic-process {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    .mosaic-output svg {
+      display: block;
+      float: left;
+    }
+
+    .mosaic-selector, .mosaic-process {
+      padding: 50px 20px;
+      left: 50%;
+      top: 50%;
+      right: auto;
+      bottom: auto;
+      width: 100%;
+      max-width: 450px;
+      background: rgba(255, 255, 255, 0.85);
+      z-index: 1;
+      -webkit-backdrop-filter: blur(15px);
+      backdrop-filter: blur(15px);
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+    }
+
+    .mosaic-progress {
+      position: relative;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 320px;
+      height: 4px;
+      overflow: hidden;
+      border: 1px solid #e6e6e6;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      border-radius: 2px;
+    }
+
+    .mosaic-progress-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0;
+      background: #ff5541;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      border-radius: 2px;
+      -webkit-transition: width 0.5s cubic-bezier(0.23, 1.1, 0.2, 0.94);
+      -moz-transition: width 0.5s cubic-bezier(0.23, 1.1, 0.2, 0.94);
+      -o-transition: width 0.5s cubic-bezier(0.23, 1.1, 0.2, 0.94);
+      transition: width 0.5s cubic-bezier(0.23, 1.1, 0.2, 0.94);
+    }
+
+    .not-visible {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="mosaic">
+  <div class="mosaic-selector">
+    <input type="file" class="mosaic-input" id="mosaic-input" accept="image/*">
+    <h3 class="mosaic-drag">Drag 'n' Drop image here</h3>
+    <div class="mosaic-drag-divider">– or –</div>
+    <button type="button" class="mosaic-button" id="mosaic-button">Select from disk</button>
+  </div>
+  <div class="mosaic-process not-visible">
+    <h3 class="mosaic-process-text">Sampling image...</h3>
+    <div class="mosaic-progress">
+      <div class="mosaic-progress-inner"></div>
+    </div>
+  </div>
+  <div class="mosaic-output not-visible" id="mosaic-output"></div>
+</div>
+
+<script type="text/javascript" src="js/mosaic.js"></script>
+<script type="text/javascript" src="js/client.js"></script>
+</body>
+</html>
