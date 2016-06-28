@@ -2,12 +2,12 @@
   "author": "Alex Malkevich <malkevich.alex@gmail.com>",
   "name": "mosaic",
   "description": "This is challenge task for Canva",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "start": "node server.js"
   },
   "main": "mosaic.html",
   "repository": {
-    "git": ""
+    "git": "https://github.com/gund/mosaic-canva"
   }
 }
